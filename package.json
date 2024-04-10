@@ -1,13 +1,15 @@
 {
-  "name": "variant-form",
-  "version": "2.2.9",
+  "name": "jrong-variant-form",
+  "version": "0.0.3",
   "private": false,
+  "main": "dist/VFormDesigner.common.js",
   "scripts": {
     "serve": "vue-cli-service serve --open src/main.js",
     "build": "vue-cli-service build --report --dest dist/build",
-    "lib": "vue-cli-service build --report --target lib --dest dist/lib --name VFormDesigner install.js",
+    "lib": "vue-cli-service build --report --target lib --dest dist --name VFormDesigner install.js",
     "lib-render": "vue-cli-service build --report --target lib --dest dist/lib-render --name VFormRender install-render.js",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepublishOnly": "npm run lib"
   },
   "dependencies": {
     "vue2-editor": "^2.10.2",
@@ -62,5 +64,12 @@
     "> 1%",
     "last 2 versions",
     "not dead"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist"
   ]
 }

@@ -83,12 +83,12 @@ export const translate = function(key) {
 export default {
   methods: {
     i18nt(key) {
-      return this.$st(key)
+      return Vue.prototype.$st(key)
     },
 
     /* 如果key1不存在，则查找key2 */
     i18n2t(key1, key2) {
-      return this.$st2(key1, key2)
+      return Vue.prototype.$st2(key1, key2)
     },
 
   }

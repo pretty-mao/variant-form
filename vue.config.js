@@ -40,7 +40,6 @@ if (IS_PROD && buildProdFlag) {
 module.exports = {
   publicPath: "./",
   assetsDir: "./",
-
   /* 开启vue运行时模板编译功能！！ */
   runtimeCompiler: true,
 
