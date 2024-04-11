@@ -88,6 +88,7 @@ import WidgetPanel from "./widget-panel/index";
 import ToolbarPanel from "./toolbar-panel/index";
 import SettingPanel from "./setting-panel/index";
 import VFormWidget from "./form-widget/index";
+// 注册创建设计器方法
 import { createDesigner } from "@/components/form-designer/designer";
 import {
   addWindowResizeHandler,
@@ -408,7 +409,7 @@ export default {
 <style lang="scss" scoped>
 .el-container.main-container {
   background: #fff;
-
+  margin: 0;
   ::v-deep aside {
     /* 防止aside样式被外部样式覆盖！！ */
     margin: 0;

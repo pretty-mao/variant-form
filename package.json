@@ -1,14 +1,14 @@
 {
   "name": "jrong-variant-form",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "main": "dist/VFormDesigner.common.js",
   "scripts": {
-    "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve --open src/main.js",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build --report --dest dist/build",
-    "lib": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build --report --target lib --dest dist --name VFormDesigner install.js",
-    "lib-render": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build --report --target lib --dest dist/lib-render --name VFormRender install-render.js",
-    "lint": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service lint",
+    "serve": "  vue-cli-service serve --open src/main.js",
+    "build": "  vue-cli-service build --report --dest dist/build",
+    "lib": " vue-cli-service build --report --target lib --dest dist --name VFormDesigner install.js",
+    "dev": " vue-cli-service build --report --target lib --dest dist --name VFormDesigner install.js --watch --no-clean",
+    "lint": "  vue-cli-service lint",
     "prepublishOnly": "npm run lib"
   },
   "dependencies": {
@@ -22,9 +22,9 @@
     "axios": "0.21.0",
     "babel-eslint": "^10.1.0",
     "babel-polyfill": "^6.26.0",
+    "clean-webpack-plugin": "^4.0.0",
     "clipboard": "2.0.6",
     "core-js": "^3.20.2",
-    "cross-env": "^7.0.3",
     "element-ui": "^2.15.6",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
@@ -72,5 +72,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "engines": {
+    "node": ">= 16.0.0"
+  }
 }

@@ -51,6 +51,7 @@ module.exports = {
   transpileDependencies: ["element-ui", "vuedraggable"],
 
   css: {
+    extract: true,
     loaderOptions: {
       scss: {
         /* 自动引入全局scss文件 */
@@ -69,6 +70,7 @@ module.exports = {
       config.externals = [
         ...Object.keys(pkg.dependencies || {}),
         ...Object.keys(pkg.peerDependencies || {}),
+        "vue",
       ];
     }
     // if (IS_PROD) {
