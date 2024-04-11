@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 import {
   addContainerWidgetSchema,
   addCustomWidgetSchema
@@ -18,7 +19,7 @@ import {registerFWGenerator} from '@/utils/sfc-generator'
 import {alertTemplateGenerator} from '@/extension/samples/extension-sfc-generator'
 
 export const loadExtension = function () {
-
+console.log('loadExtension');
   /**
    * 加载容器组件步骤：
    * 1. 加载组件Json Schema;
@@ -29,10 +30,8 @@ export const loadExtension = function () {
    */
   addContainerWidgetSchema(cardSchema)  //加载组件Json Schema
   /* -------------------------------------------------- */
-  Vue.component(CardWidget.name, CardWidget)  //注册设计期的容器组件 
+  Vue.component(CardWidget.name, CardWidget)  //注册设计期的容器组件
   Vue.component(CardItem.name, CardItem)  //注册运行期的容器组件
-  console.log('注册的组件:', Vue.options.components);
-  console.log(11111111111111111);
   /* -------------------------------------------------- */
   PERegister.registerCPEditor('card-folded', 'card-folded-editor',
       PEFactory.createBooleanEditor('folded', 'extension.setting.cardFolded'))

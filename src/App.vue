@@ -1,22 +1,18 @@
 <template>
-  <div id="apps">
-    <VFormDesigner
-      ref="vfDesignerRef"
-      :designer-config="designerConfig"
-      :global-dsv="globalDsv"
-    >
+  <div id="app">
+    <VFormDesigner ref="vfDesignerRef" :designer-config="designerConfig" :global-dsv="globalDsv">
       <template #customToolButtons>
-        <el-button type="text" @click="printFormJson">测试按钮666</el-button>
+        <el-button type="text" @click="printFormJson">测试按钮</el-button>
       </template>
     </VFormDesigner>
   </div>
 </template>
 
 <script>
-import VFormDesigner from "./components/form-designer/index.vue";
+import VFormDesigner from './components/form-designer/index.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     VFormDesigner,
   },
@@ -29,21 +25,21 @@ export default {
 
       //全局数据源变量
       globalDsv: {
-        testApiHost: "http://www.test.com/api",
+        testApiHost: 'http://www.test.com/api',
         testPort: 8080,
       },
-    };
+    }
   },
   methods: {
     printFormJson() {
-      console.log(this.$refs.vfDesignerRef.getFormJson());
-    },
-  },
-};
+      console.log( this.$refs.vfDesignerRef.getFormJson() )
+    }
+  }
+}
 </script>
 
 <style lang="scss">
-#apps {
-  height: 100%;
-}
+  #app {
+    height: 100%;
+  }
 </style>

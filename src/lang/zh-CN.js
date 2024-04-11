@@ -2,7 +2,7 @@ export default {
   application: {
     'zh-CN': '简体中文',
     'en-US': 'English',
-    productTitle: '表单设计器',
+    productTitle: '表单设计器1111',
     github: 'GitHub',
     document: '文档',
     qqGroup: '技术WX群',
