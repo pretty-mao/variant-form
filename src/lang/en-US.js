@@ -2,12 +2,7 @@ export default {
   application: {
     'zh-CN': '简体中文',
     'en-US': 'English',
-    productTitle: 'Online Form Designer',
-    github: 'GitHub',
-    document: 'Docs',
-    qqGroup: 'WeChat Group',
-    deployment: 'Deployment',
-    subscription: 'Subscription',
+    productTitle: 'Online Form Designer'
   },
 
   designer: {
@@ -20,45 +15,47 @@ export default {
     advancedFieldTitle: 'Advanced Field',
     customFieldTitle: 'Customized Field',
 
-    noWidgetHint: 'Please select a widget from the left list, drag and drop to this container.',
+    noWidgetHint:
+      'Please select a widget from the left list, drag and drop to this container.',
 
     widgetLabel: {
-      grid:             'Grid',
-      table:            'Table',
-      tab:              'Tab',
-      section:          'Section',
-      'sub-form':       'SubForm',
-      'grid-col':       'GridCol',
-      'table-cell':     'TableCell',
-      'tab-pane':       'TabPane',
-      'data-table':     'DataTable',
+      grid: 'Grid',
+      table: 'Table',
+      tab: 'Tab',
+      'headline-pane': 'Headline',
+      section: 'Section',
+      'sub-form': 'SubForm',
+      'grid-col': 'GridCol',
+      'table-cell': 'TableCell',
+      'tab-pane': 'TabPane',
+      'data-table': 'DataTable',
 
-      input:          'Input',
-      textarea:       'Textarea',
-      number:         'InputNumber',
-      radio:          'Radio',
-      checkbox:       'Checkbox',
-      select:         'Select',
-      time:           'Time',
-      'time-range':   'Time range',
-      date:           'Date',
-      'date-range':   'Date range',
-      switch:         'Switch',
-      rate:           'Rate',
-      color:          'ColorPicker',
-      slider:         'Slider',
-      'static-text':  'Text',
-      'html-text':    'HTML',
-      button:         'Button',
-      divider:        'Divider',
+      input: 'Input',
+      textarea: 'Textarea',
+      number: 'InputNumber',
+      radio: 'Radio',
+      checkbox: 'Checkbox',
+      select: 'Select',
+      time: 'Time',
+      'time-range': 'Time range',
+      date: 'Date',
+      'date-range': 'Date range',
+      switch: 'Switch',
+      rate: 'Rate',
+      color: 'ColorPicker',
+      slider: 'Slider',
+      'static-text': 'Text',
+      'html-text': 'HTML',
+      button: 'Button',
+      divider: 'Divider',
 
       'picture-upload': 'Picture',
-      'file-upload':    'File',
-      'rich-editor':    'Rich Editor',
-      cascader:         'Cascader',
-      slot:             'Slot',
+      'file-upload': 'File',
+      'rich-editor': 'Rich Editor',
+      cascader: 'Cascader',
+      slot: 'Slot',
 
-      custom:           'Custom Component',
+      custom: 'Custom Component'
     },
 
     hint: {
@@ -72,7 +69,8 @@ export default {
       cellSetting: 'Cell setting',
       dragHandler: 'Drag handler',
       copyField: 'Copy field widget',
-      onlyFieldWidgetAcceptable: 'Only field widget can be dragged into sub-form',
+      onlyFieldWidgetAcceptable:
+        'Only field widget can be dragged into sub-form',
       moveUpFirstChildHint: 'First child can not be move up',
       moveDownLastChildHint: 'Last child can not be move down',
 
@@ -121,7 +119,8 @@ export default {
       confirm: 'OK',
       cancel: 'Cancel',
       import: 'Import',
-      importJsonHint: 'The code to be imported should have the following JSON format.',
+      importJsonHint:
+        'The code to be imported should have the following JSON format.',
       invalidOptionsData: 'Invalid data of options:',
       lastPaneCannotBeDeleted: 'The last pane cannot be deleted.',
       duplicateName: 'Duplicate name: ',
@@ -136,12 +135,16 @@ export default {
       noChineseValidator: 'Non-Chinese',
       chineseValidator: 'Chinese',
 
-      rowspanNotConsistentForMergeEntireRow: 'Cells in this row don\'t have the same rowspan, operation failed.',
-      colspanNotConsistentForMergeEntireColumn: 'Cells in this column don\'t have the same colspan, operation failed.',
-      rowspanNotConsistentForDeleteEntireRow: 'Cells in this row don\'t have the same rowspan, operation failed.',
-      colspanNotConsistentForDeleteEntireColumn: 'Cells in this column don\'t have the same colspan, operation failed.',
+      rowspanNotConsistentForMergeEntireRow:
+        "Cells in this row don't have the same rowspan, operation failed.",
+      colspanNotConsistentForMergeEntireColumn:
+        "Cells in this column don't have the same colspan, operation failed.",
+      rowspanNotConsistentForDeleteEntireRow:
+        "Cells in this row don't have the same rowspan, operation failed.",
+      colspanNotConsistentForDeleteEntireColumn:
+        "Cells in this column don't have the same colspan, operation failed.",
       lastColCannotBeDeleted: 'The last col cannot be deleted.',
-      lastRowCannotBeDeleted: 'The last row cannot be deleted.',
+      lastRowCannotBeDeleted: 'The last row cannot be deleted.'
     },
 
     toolbar: {
@@ -158,7 +161,7 @@ export default {
       exportJson: 'Export',
       exportCode: 'Codes',
       generateCode: 'Generate Code',
-      generateSFC: 'Generate SFC',
+      generateSFC: 'Generate SFC'
     },
 
     setting: {
@@ -321,7 +324,8 @@ export default {
       formModelName: 'Model Name',
       formRefName: 'Ref Name',
       formRulesName: 'Rules Name',
-      syntaxCheckWarning: 'Syntax error in the javascript codes, please check again!',
+      syntaxCheckWarning:
+        'Syntax error in the javascript codes, please check again!',
 
       //data-table
       tableWidth: 'Width(px/%)',
@@ -347,8 +351,7 @@ export default {
       actionColumn: 'Action',
       addTableColumn: 'Add New Column',
       deleteTableColumn: 'Delete This Column',
-      OnlyOneColumnCannotBeDeleted: 'The last column cannot be deleted.',
+      OnlyOneColumnCannotBeDeleted: 'The last column cannot be deleted.'
     }
-
   }
 }

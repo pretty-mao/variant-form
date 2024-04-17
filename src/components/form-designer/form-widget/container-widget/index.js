@@ -18,7 +18,10 @@ export default comps;
 end */
 
 /* 全局注册！！ */
-requireComponent.keys().map(fileName => {
-  let comp = requireComponent(fileName).default;
-  Vue.component(comp.name, comp)
-})
+
+export const loadComtainerComponents = function (Vue) {
+  requireComponent.keys().map(fileName => {
+    let comp = requireComponent(fileName).default
+    Vue.component(comp.name, comp)
+  })
+}

@@ -2,7 +2,7 @@
   "name": "jrong-variant-form",
   "version": "0.0.4",
   "private": false,
-  "main": "./dist/VFormDesigner.common.js",
+  "main": "dist/VFormDesigner.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve --open src/main.js",
     "build": "vue-cli-service build --report --dest dist/build",
@@ -15,11 +15,7 @@
     "axios": "^0.21.1",
     "clipboard": "^2.0.8",
     "core-js": "^3.6.5",
-    "element-ui": "^2.15.1",
-    "file-saver": "^2.0.5",
-    "vue": "^2.6.11",
-    "vue2-editor": "^2.10.2",
-    "vuedraggable": "^2.24.3"
+    "file-saver": "^2.0.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -32,6 +28,10 @@
     "eslint-plugin-vue": "^6.2.2",
     "mvdir": "^1.0.21",
     "sass": "^1.45.1",
+    "vue": "^2.6.11",
+    "vue2-editor": "^2.10.2",
+    "element-ui": "^2.15.1",
+    "vuedraggable": "^2.24.3",
     "sass-loader": "^8.0.2",
     "svg-sprite-loader": "^5.2.1",
     "vue-template-compiler": "^2.6.11"
@@ -58,11 +58,5 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  },
-  "files": [
-    "dist"
-  ],
-  "engines": {
-    "node": ">= 16.0.0"
   }
 }

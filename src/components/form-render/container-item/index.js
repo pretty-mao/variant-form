@@ -1,4 +1,4 @@
-import Vue from "vue"
+import Vue from 'vue'
 
 const requireComponent = require.context('./', false, /\w+\.vue$/)
 
@@ -18,7 +18,9 @@ export default comps;
 end */
 
 /* 全局注册！！ */
-requireComponent.keys().map(fileName => {
-  let comp = requireComponent(fileName).default;
-  Vue.component(comp.name, comp)
-})
+export const loadComtainerItemComponents = function (Vue) {
+  requireComponent.keys().map(fileName => {
+    let comp = requireComponent(fileName).default
+    Vue.component(comp.name, comp)
+  })
+}
