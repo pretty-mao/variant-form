@@ -1,6 +1,6 @@
 {
   "name": "jrong-variant-form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "main": "dist/VFormDesigner.umd.min.js",
   "scripts": {
