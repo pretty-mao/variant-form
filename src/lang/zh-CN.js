@@ -14,20 +14,17 @@ export default {
     basicFieldTitle: '基础字段',
     advancedFieldTitle: '高级字段',
     customFieldTitle: '自定义扩展字段',
-
     noWidgetHint: '请从左侧列表中选择一个组件, 然后用鼠标拖动组件放置于此处.',
-
     widgetLabel: {
       grid: '栅格',
       table: '表格',
       tab: '标签页',
-      headline: '标题',
+      demo: '标题',
       section: '区块',
       'sub-form': '子表单',
       'grid-col': '栅格列',
       'table-cell': '单元格',
       'tab-pane': '选项卡页',
-      'headline-pane': '标题',
       'data-table': '数据表格',
 
       input: '单行输入',

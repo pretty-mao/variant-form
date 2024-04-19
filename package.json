@@ -4,6 +4,8 @@
   "private": false,
   "main": "dist/VFormDesigner.umd.min.js",
   "scripts": {
+    "test": "node -e \"if (process.versions.node.split('.')[0] > 16){require('child_process').execSync('cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve --open src/main.js')}else{require('child_process').execSync('npm run sercer')}\"",
+    "sercer-legacy": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve --open src/main.js",
     "serve": "vue-cli-service serve --open src/main.js",
     "build": "vue-cli-service build --report --dest dist/build",
     "lib": "vue-cli-service build --report --target lib --dest dist --name VFormDesigner install.js",
@@ -24,17 +26,18 @@
     "ace-builds": "^1.4.12",
     "babel-eslint": "^10.1.0",
     "babel-polyfill": "^6.26.0",
+    "cross-env": "^7.0.3",
+    "element-ui": "^2.15.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "mvdir": "^1.0.21",
     "sass": "^1.45.1",
-    "vue": "^2.6.11",
-    "vue2-editor": "^2.10.2",
-    "element-ui": "^2.15.1",
-    "vuedraggable": "^2.24.3",
     "sass-loader": "^8.0.2",
     "svg-sprite-loader": "^5.2.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
+    "vue2-editor": "^2.10.2",
+    "vuedraggable": "^2.24.3"
   },
   "eslintConfig": {
     "root": true,

@@ -112,7 +112,7 @@ export default {
      * @param evt
      * @returns {boolean}
      */
-    checkContainerMove(evt) {
+    checkContainerMove() {
       return true;
     },
 

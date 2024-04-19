@@ -139,7 +139,6 @@
       width="75%"
       :fullscreen="layoutType === 'H5' || layoutType === 'Pad'"
     >
-      {{ formJson }}
       <div>
         <div
           class="form-render-wrapper"

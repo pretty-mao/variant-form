@@ -30,39 +30,24 @@
 
       <el-container class="center-layout-container">
         <el-header class="toolbar-header">
-          <toolbar-panel
-            :designer="designer"
-            :global-dsv="globalDsv"
-            ref="toolbarRef"
-          >
+          <toolbar-panel :designer="designer" :global-dsv="globalDsv" ref="toolbarRef">
             <template v-for="(idx, slotName) in $slots" #[slotName]>
               <slot :name="slotName"></slot>
             </template>
           </toolbar-panel>
         </el-header>
         <el-main class="form-widget-main">
-          <el-scrollbar
-            class="container-scroll-bar"
-            :style="{ height: scrollerHeight }"
-          >
-            <v-form-widget
-              :designer="designer"
-              :form-config="designer.formConfig"
-              :global-dsv="globalDsv"
-              ref="formRef"
-            >
+          <el-scrollbar class="container-scroll-bar" :style="{ height: scrollerHeight }">
+            <v-form-widget :designer="designer" :form-config="designer.formConfig" :global-dsv="globalDsv"
+              ref="formRef">
             </v-form-widget>
           </el-scrollbar>
         </el-main>
       </el-container>
 
       <el-aside>
-        <setting-panel
-          :designer="designer"
-          :selected-widget="designer.selectedWidget"
-          :form-config="designer.formConfig"
-          :global-dsv="globalDsv"
-        />
+        <setting-panel :designer="designer" :selected-widget="designer.selectedWidget"
+          :form-config="designer.formConfig" :global-dsv="globalDsv" />
       </el-aside>
     </el-container>
   </el-container>
@@ -85,7 +70,6 @@ import {
 import { MOCK_CASE_URL, VARIANT_FORM_VERSION } from "@/utils/config";
 import i18n, { changeLocale } from "@/utils/i18n";
 import axios from "axios";
-import SvgIcon from "@/components/svg-icon";
 
 export default {
   name: "VFormDesigner",
@@ -96,7 +80,6 @@ export default {
     ToolbarPanel,
     SettingPanel,
     VFormWidget,
-    SvgIcon,
   },
   props: {
     /* 后端字段列表API */
@@ -145,11 +128,6 @@ export default {
 
       vsCodeFlag: false,
       caseName: "",
-
-      docUrl: "https://www.vform666.com/document.html",
-      gitUrl: "https://github.com/vform666/variant-form",
-      chatUrl: "https://www.vform666.com/pages/chat-group/",
-      subScribeUrl: "https://www.vform666.com/pages/pro/",
 
       scrollerHeight: 0,
       // designer.js中的创建设计器方法
@@ -410,6 +388,7 @@ export default {
   background: #fff;
   //解决与主项目样式冲突问题
   margin-left: 0 !important;
+
   ::v-deep aside {
     /* 防止aside样式被外部样式覆盖！！ */
     margin: 0;
@@ -502,6 +481,7 @@ div.external-link a {
 }
 
 .container-scroll-bar {
+
   ::v-deep .el-scrollbar__wrap,
   ::v-deep .el-scrollbar__view {
     overflow-x: hidden;
