@@ -2,15 +2,15 @@
   <static-content-wrapper :designer="designer" :field="field" :design-state="designState"
                           :parent-widget="parentWidget" :parent-list="parentList" :index-of-parent-list="indexOfParentList"
                           :sub-form-row-index="subFormRowIndex" :sub-form-col-index="subFormColIndex" :sub-form-row-id="subFormRowId">
-    <div ref="fieldEditor" :style="!!field.options.fontSize ? `font-size: ${field.options.fontSize};`: ''">
-      <pre :style="{'white-space': !!field.options.preWrap ? 'pre-wrap' : 'pre', 'text-align': !!field.options.textAlign ? field.options.textAlign : 'left'}">{{field.options.textContent}}</pre></div>
+    <div ref="fieldEditor" class="flex-start align-center" :style="!!field.options.fontSize ? `font-size: ${field.options.fontSize};`: ''">
+     <i :class="field.options.icon" class="primary-color mr5"></i> <pre class="default-color" :style="{'white-space': !!field.options.preWrap ? 'pre-wrap' : 'pre', 'text-align': !!field.options.textAlign ? field.options.textAlign : 'left'}">{{field.options.textContent}}</pre></div>
   </static-content-wrapper>
 </template>
 
 <script>
   import StaticContentWrapper from './static-content-wrapper'
   import emitter from '@/utils/emitter'
-  import i18n, {translate} from "@/utils/i18n";
+  import i18n from "@/utils/i18n";
   import fieldMixin from "@/components/form-designer/form-widget/field-widget/fieldMixin";
 
   export default {

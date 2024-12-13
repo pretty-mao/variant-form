@@ -1,4 +1,3 @@
-
 html {
   height: 100%;
   box-sizing: border-box;
@@ -6,23 +5,27 @@ html {
 
 body {
   height: 100%;
-  margin: 0; /*  */
+  margin: 0;
+  /*  */
   background-color: #ffffff;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
-.flex-start{
+
+.flex-start {
   display: flex;
   justify-content: flex-start;
   align-self: start;
 }
-.flex-center{
+
+.flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.align-center{
+
+.align-center {
   align-items: center !important;
 }

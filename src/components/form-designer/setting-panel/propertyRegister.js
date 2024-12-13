@@ -34,7 +34,6 @@ const COMMON_PROPERTIES = {
   textAlign: "textAlign-editor",
   fontSize: "fontSize-editor",
   preWrap: "preWrap-editor",
-  htmlContent: "htmlContent-editor",
   format: "format-editor",
   valueFormat: "valueFormat-editor",
   filterable: "filterable-editor",

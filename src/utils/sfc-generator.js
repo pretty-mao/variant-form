@@ -299,12 +299,6 @@ const elTemplates = {  //字段组件属性
             ${showText} ${showScore}></el-rate>`
   },
 
-  'color': (widget, formConfig) => {
-    const {vModel, disabled, size
-      } = getElAttrs(widget, formConfig)
-    return `<el-color-picker ${vModel} ${disabled} ${size}></el-color-picker>`
-  },
-
   'slider': (widget, formConfig) => {
     const {vModel, disabled, sliderMin, sliderMax, sliderStep, sliderRange, sliderVertical
       } = getElAttrs(widget, formConfig)
@@ -345,11 +339,7 @@ const elTemplates = {  //字段组件属性
   },
 
   'static-text': (widget, formConfig) => {
-    return `<div>${widget.options.textContent}</div>`
-  },
-
-  'html-text': (widget, formConfig) => {
-    return `<div v-html="${widget.options.htmlContent}"></div>`
+    return `<div> <i :class="${widget.icon}"></i>${widget.options.textContent}</、div>`
   },
 
   'button': (widget, formConfig) => {

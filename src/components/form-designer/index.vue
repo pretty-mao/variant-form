@@ -10,9 +10,9 @@
 
 <template>
   <el-container class="main-container full-height">
+    <!-- 头部 -->
     <el-header class="main-header">
       <div class="float-left main-title">
-        <!-- logo -->
         <!-- <img src="../../assets/vform-logo.png" @click="openHome" /> -->
         <span class="bold">{{ i18nt("application.productTitle") }}</span>
         <!-- <span class="version-span">Ver {{ vFormVersion }}</span> -->
@@ -25,10 +25,12 @@
 
     <el-container>
       <el-aside class="side-panel">
+        <!-- 左侧 -->
         <widget-panel :designer="designer" />
       </el-aside>
 
       <el-container class="center-layout-container">
+        <!-- 顶部 -->
         <el-header class="toolbar-header">
           <toolbar-panel :designer="designer" :global-dsv="globalDsv" ref="toolbarRef">
             <template v-for="(idx, slotName) in $slots" #[slotName]>
@@ -38,6 +40,7 @@
         </el-header>
         <el-main class="form-widget-main">
           <el-scrollbar class="container-scroll-bar" :style="{ height: scrollerHeight }">
+            <!-- 设计器 -->
             <v-form-widget :designer="designer" :form-config="designer.formConfig" :global-dsv="globalDsv"
               ref="formRef">
             </v-form-widget>
@@ -46,6 +49,7 @@
       </el-container>
 
       <el-aside>
+        <!-- 右侧设置 -->
         <setting-panel :designer="designer" :selected-widget="designer.selectedWidget"
           :form-config="designer.formConfig" :global-dsv="globalDsv" />
       </el-aside>

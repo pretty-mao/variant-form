@@ -27,6 +27,7 @@
     },
     created() {
       this.cssClassList = deepClone(this.designer.getCssClassList())
+      console.log(this.designer,this.cssClassList,'designer')
       //监听表单css代码改动事件并重新加载！
       this.designer.handleEvent('form-css-updated', (cssClassList) => {
         this.cssClassList = cssClassList

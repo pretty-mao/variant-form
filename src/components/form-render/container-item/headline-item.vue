@@ -1,24 +1,6 @@
 <template>
   <container-item-wrapper :widget="widget">
-    {{ widget }}
-    <div
-      :key="widget.id"
-      class="tab-container"
-      style="margin: 5px"
-      :class="{ selected: selected }"
-      :style="{
-        padding: '10px 0',
-        borderRadius: '2px',
-      }"
-      v-show="!widget.options.hidden"
-    >
-      我是大标题啊
-      <el-input
-        class="center"
-        :disabled="tab.options.disabled"
-        v-model="widget.options.label"
-      ></el-input>
-    </div>
+    <div class="headline">{{ widget.options.label }}</div>
   </container-item-wrapper>
 </template>
 
@@ -81,14 +63,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep {
-  .center {
-    .el-input__inner {
-      text-align: center;
-      font-weight: 800;
-      color: rgb(30, 30, 30);
-      font-size: 22px;
-    }
-  }
+.headline{
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
 }
 </style>

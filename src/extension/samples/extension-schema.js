@@ -14,6 +14,24 @@ export const cardSchema = {
     customClass: ''
   }
 }
+
+export const headlineSchema = {
+  type: 'headline',
+  category: 'container',
+  icon: 'title',
+  widgetList: [],
+  options: {
+    name: '',
+    label: '我是大标题',
+    hidden: false,
+    folded: false,
+    showFold: true,
+    cardWidth: '100%',
+    shadow: 'never',
+    customClass: 't-danger'
+  }
+}
+
 export const treeSchema = {
   type: 'tree',
   icon: 'tree',
@@ -89,14 +107,79 @@ export const treeSchema = {
   }
 }
 
-export const alertSchema = {
-  type: 'alert',
-  icon: 'alert',
-  formItemFlag: false,
+export const staffSchema = {
+  type: 'staff',
+  icon: 'staff',
+  formItemFlag: true, // 是否可以作为表单项收集数据
   options: {
     name: '',
-    title: 'Good things are coming...',
+    label:'人员选择',
     type: 'info',
+    description: '选择人员.......',
+    requiredHint: "",
+    required: true,
+    closable: true,
+    closeText: '',
+    center: true,
+    showIcon: false,
+    effect: 'light',
+    hidden: false,
+    onDelete: '',
+    customClass: ''
+  }
+}
+export const teamSchema = {
+  type: 'team',
+  icon: 'team',
+  formItemFlag: true, // 是否可以作为表单项收集数据
+  options: {
+    name: '',
+    label:'团队选择',
+    type: 'info',
+    description: '',
+    requiredHint: "",
+    required: true,
+    closable: true,
+    closeText: '',
+    center: true,
+    showIcon: false,
+    effect: 'light',
+    hidden: false,
+    onDelete: '',
+    customClass: ''
+  }
+}
+export const orgSchema = {
+  type: 'org',
+  icon: 'org',
+  formItemFlag: true, // 是否可以作为表单项收集数据
+  options: {
+    name: '',
+    label:'部门选择',
+    type: 'info',
+    description: '',
+    requiredHint: "",
+    required: true,
+    closable: true,
+    closeText: '',
+    center: true,
+    showIcon: false,
+    effect: 'light',
+    hidden: false,
+    onDelete: '',
+    customClass: ''
+  }
+}
+export const postSchema = {
+  type: 'post',
+  icon: 'post',
+  formItemFlag: true, // 是否可以作为表单项收集数据
+  options: {
+    name: '',
+    label:'岗位选择',
+    type: 'info',
+    required: true,
+    requiredHint: "",
     description: '',
     closable: true,
     closeText: '',
@@ -104,7 +187,7 @@ export const alertSchema = {
     showIcon: false,
     effect: 'light',
     hidden: false,
-    onClose: '',
+    onDelete: '',
     customClass: ''
   }
 }

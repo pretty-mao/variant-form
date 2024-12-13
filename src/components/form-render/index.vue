@@ -49,6 +49,7 @@
           :parent-list="widgetList"
           :index-of-parent-list="index"
           :parent-widget="null"
+          @handleExternal="handleExternal"
         >
           <!-- 递归传递插槽！！！ -->
           <template
@@ -152,6 +153,7 @@ export default {
     },
 
     widgetList() {
+      console.log(this.formJsonObj.widgetList,'widgetList');
       return this.formJsonObj.widgetList;
     },
 
@@ -197,6 +199,10 @@ export default {
     this.handleOnMounted();
   },
   methods: {
+    handleExternal(action, field) {
+      console.log(action, field, "外部接受");
+      this.$emit("handleExternal", action, field);
+    },
     initFormObject(insertHtmlCodeFlag = true) {
       this.formId = "vfRender" + generateId();
       if (!!insertHtmlCodeFlag) {

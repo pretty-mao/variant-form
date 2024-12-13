@@ -1,10 +1,16 @@
 /* 全局css变量 */
 $--color-primary: #409EFF;
+$--color-default: #909399;
 
 .primary-color {
   color: $--color-primary;
 }
-
+.default-color {
+  color: $--color-default;
+} 
+.mr5{
+  margin-right: 5px;
+}
 .background-opacity {
   background: rgba(64, 158, 255, 0.6);
 }

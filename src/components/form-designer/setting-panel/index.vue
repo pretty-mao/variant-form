@@ -5,8 +5,7 @@
       <el-tab-pane :label="i18nt('designer.hint.widgetSetting') + '111'" name="1">
         <el-scrollbar class="setting-scrollbar" :style="{ height: scrollerHeight }">
           <template v-if="!!designer.selectedWidget && !designer.selectedWidget.category
-      ">
-            {{ JSON.stringify(widgetActiveCollapseNames) }}66
+          ">
             <el-form :model="optionModel" size="mini" label-position="left" label-width="120px" class="setting-form"
               @submit.native.prevent>
               <el-collapse v-model="widgetActiveCollapseNames" class="setting-collapse">
@@ -39,7 +38,7 @@
           </template>
 
           <template v-if="!!designer.selectedWidget && !!designer.selectedWidget.category
-      ">
+          ">
             {{ JSON.stringify(optionModel) }}22
             <el-form :model="optionModel" size="mini" label-position="left" label-width="120px" class="setting-form"
               @submit.native.prevent>

@@ -6,13 +6,21 @@ import * as PERegister from "@/components/form-designer/setting-panel/propertyRe
 import * as PEFactory from "@/components/form-designer/setting-panel/property-editor-factory";
 
 import { cardSchema } from "@/extension/samples/extension-schema";
+import { headlineSchema } from "@/extension/samples/extension-schema";
 import CardWidget from "@/extension/samples/card/card-widget";
 import CardItem from "@/extension/samples/card/card-item";
 import { registerCWGenerator } from "@/utils/sfc-generator";
 import { cardTemplateGenerator } from "@/extension/samples/extension-sfc-generator";
 
-import { alertSchema } from "@/extension/samples/extension-schema";
-import AlertWidget from "@/extension/samples/alert/alert-widget";
+import { staffSchema } from "@/extension/samples/extension-schema";
+import staffWidget from "@/extension/samples/staff/staff-widget.vue";
+
+import { teamSchema } from "@/extension/samples/extension-schema";
+import teamWidget from "@/extension/samples/team/team-widget.vue";
+import { orgSchema } from "@/extension/samples/extension-schema";
+import orgWidget from "@/extension/samples/org/org-widget.vue";
+import { postSchema } from "@/extension/samples/extension-schema";
+import postWidget from "@/extension/samples/post/post-widget.vue";
 import { registerFWGenerator } from "@/utils/sfc-generator";
 import {
   alertTemplateGenerator,
@@ -21,13 +29,10 @@ import {
 
 import { loadComtainerComponents } from "@/components/form-designer/form-widget/container-widget";
 import { loadComtainerItemComponents } from "@/components/form-render/container-item";
-import { loadDemo } from "@/extension/samples/demo/index";
 
 export const loadExtension = function (Vue) {
   loadComtainerComponents(Vue);
   loadComtainerItemComponents(Vue);
-
-  loadDemo(Vue);
 
   /**
    * 加载容器组件步骤：
@@ -38,9 +43,12 @@ export const loadExtension = function (Vue) {
    * 5. 加载完毕。
    */
   addContainerWidgetSchema(cardSchema); //加载组件Json Schema
+  addContainerWidgetSchema(headlineSchema); //加载组件Json Schema
+  
   /* -------------------------------------------------- */
   Vue.component(CardWidget.name, CardWidget); //注册设计期的容器组件
   Vue.component(CardItem.name, CardItem); //注册运行期的容器组件
+  
   /* -------------------------------------------------- */
   // 注册基本属性右侧编辑器
   PERegister.registerCPEditor(
@@ -90,9 +98,17 @@ export const loadExtension = function (Vue) {
    * 4. 注册字段组件的代码生成器；
    * 5. 加载完毕。
    */
-  addCustomWidgetSchema(alertSchema); //加载组件Json Schema
+
+  addCustomWidgetSchema(staffSchema); //加载组件Json Schema
+  addCustomWidgetSchema(teamSchema); //加载组件Json Schema
+  addCustomWidgetSchema(orgSchema); //加载组件Json Schema
+  addCustomWidgetSchema(postSchema); //加载组件Json Schema
   /* -------------------------------------------------- */
-  Vue.component(AlertWidget.name, AlertWidget); //注册组件
+  Vue.component(staffWidget.name,staffWidget); //注册组件
+  Vue.component(teamWidget.name,teamWidget); //注册组件
+  Vue.component(postWidget.name,postWidget); //注册组件
+  Vue.component(orgWidget.name,orgWidget); //注册组件
+
   /* -------------------------------------------------- */
   PERegister.registerCPEditor(
     "alert-title",

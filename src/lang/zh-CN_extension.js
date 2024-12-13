@@ -3,6 +3,10 @@ export default {
     widgetLabel: {
       card: '卡片',
       alert: '提示',
+      staff: '员工',
+      team: '团队',
+      org:'部门',
+      post: '岗位',
     },
 
     setting: {
@@ -13,7 +17,7 @@ export default {
 
       alertTitle: '标题',
       alertType: '类型',
-      description: '辅助性文字',
+      description: '描述',
       closable: '是否可关闭',
       closeText: '关闭按钮文字',
       center: '文字居中',
