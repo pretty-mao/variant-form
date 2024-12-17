@@ -64,10 +64,17 @@
       customClass() {
         return this.widget.options.customClass || ''
       },
-
+      layoutType() {
+        return this.designer.getLayoutType()
+      },
     },
     watch: {
-      //
+      widget: {
+      handler(newVal, oldVal) {
+        console.log('Widget changed:', newVal);
+      },
+      deep: true // 如果需要深度监听对象内部的变化
+    }
     },
     created() {
       this.initRefList()

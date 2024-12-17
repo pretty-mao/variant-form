@@ -107,7 +107,6 @@ export default {
           widgetNameReadonly: false, //禁止修改组件名称
           clearDesignerButton: true, //是否显示清空设计器按钮
           previewFormButton: true, //是否显示预览表单按钮
-          importJsonButton: true, //是否显示导入JSON按钮
           exportJsonButton: true, //是否显示导出JSON器按钮
           exportCodeButton: true, //是否显示导出代码按钮
           generateSFCButton: true, //是否显示生成SFC按钮

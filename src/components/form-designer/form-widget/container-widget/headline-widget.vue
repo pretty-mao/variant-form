@@ -1,12 +1,3 @@
-<!--
-/**
- * author: vformAdmin
- * email: vdpadmin@163.com
- * website: https://www.vform666.com
- * date: 2021.08.18
- * remark: 如果要分发VForm源码，需在本文件顶部保留此文件头信息！！
- */
--->
 
 <template>
   <container-wrapper
@@ -28,7 +19,7 @@
       @click="onHeadlineClick"
     >
       <el-input
-        class="center"
+        :class="customClass"
         @focus="selectWidget(widget)"
         v-model.trim="widget.options.label"
       >
@@ -72,8 +63,18 @@ export default {
     },
 
     customClass() {
-      return this.widget.options.customClass || "";
-    },
+    let alignmentClass = '';
+    if (this.widget.options.textAlign === 'center') {
+      alignmentClass = 'center';
+    } else if (this.widget.options.textAlign === 'right') {
+      alignmentClass = 'end';
+    } else {
+      alignmentClass = 'start';
+    }
+    let customClass = this.widget.options.customClass || '';
+
+    return `${alignmentClass} ${customClass}`.trim();
+  }
   },
   watch: {
     //
@@ -98,17 +99,24 @@ export default {
 
 <style lang="scss" scoped>
 ::v-deep {
-  .center {
-    .el-input__inner {
-      text-align: center;
-      font-weight: 800;
-      color: rgb(30, 30, 30);
-      font-size: 22px;
-    }
+  .center .el-input__inner,
+  .end .el-input__inner,
+  .start .el-input__inner {
+    font-weight: 800;
+    color: rgb(30, 30, 30);
+    font-size: 22px;
+  }
+  .center .el-input__inner {
+    text-align: center;
+  }
+  .end .el-input__inner {
+    text-align: right;
+  }
+  .start .el-input__inner {
+    text-align: left;
   }
 }
 .tab-container {
-  //padding: 5px;
   margin: 2px;
 
   .form-widget-list {

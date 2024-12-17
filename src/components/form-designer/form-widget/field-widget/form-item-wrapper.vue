@@ -95,10 +95,9 @@
       },
 
       label() {
-        if (!!this.field.options.labelHidden) {
+        if (this.field.options.labelHidden) {
           return ''
         }
-
         return this.field.options.label
       },
 

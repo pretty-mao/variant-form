@@ -1,6 +1,6 @@
 <template>
   <container-item-wrapper :widget="widget">
-    <div class="headline">{{ widget.options.label }}</div>
+    <div class="headline"  :class="customClass">{{ widget.options.label }}</div>
   </container-item-wrapper>
 </template>
 
@@ -35,6 +35,19 @@ export default {
         return !tp.options.hidden;
       });
     },
+    customClass() {
+            let alignmentClass = '';
+            if (this.widget.options.textAlign === 'center') {
+                alignmentClass = 'flex-center';
+            } else if (this.widget.options.textAlign === 'right') {
+                alignmentClass = 'flex-end';
+            } else {
+                alignmentClass = 'flex-start';
+            }
+            let customClass = this.widget.options.customClass || '';
+
+            return `${alignmentClass} ${customClass}`.trim();
+        }
   },
   created() {
     this.initRefList();
@@ -66,7 +79,6 @@ export default {
 .headline{
   font-weight: 700;
   font-size: 24px;
-  text-align: center;
   margin-bottom: 20px;
   color: #000;
 }

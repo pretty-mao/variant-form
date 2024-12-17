@@ -8,12 +8,40 @@
   color: #909399;
 }
 
+.success-color {
+  color: #67C23A;
+}
+
+.warning-color {
+  color: #E6A23C;
+}
+
+.danger-color {
+  color: #F56C6C;
+}
+
 .mr5 {
   margin-right: 5px;
 }
 
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
 .background-opacity {
   background: rgba(64, 158, 255, 0.6);
+}
+
+.t-mark {
+  border-bottom: 2px solid #409EFF;
+}
+
+.t-bottom {
+  border-bottom: 2px solid #909399;
 }
 
 .form-widget-list .ghost {

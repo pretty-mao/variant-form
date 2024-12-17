@@ -1,6 +1,7 @@
 <template>
-  <div class="toolbar-container">
-    <div class="left-toolbar">
+  <div>
+  <div class="flex-space-between toolbar-container">
+    <div>
       <el-button
         type="text"
         :disabled="undoDisabled"
@@ -17,105 +18,38 @@
       >
         <svg-icon icon-class="redo"
       /></el-button>
-      <el-button-group style="margin-left: 20px">
-        <el-button
-          :type="layoutType === 'PC' ? 'info' : ''"
-          @click="changeLayoutType('PC')"
-        >
-          {{ i18nt("designer.toolbar.pcLayout") }}</el-button
-        >
-        <el-button
-          :type="layoutType === 'Pad' ? 'info' : ''"
-          @click="changeLayoutType('Pad')"
-        >
-          {{ i18nt("designer.toolbar.padLayout") }}</el-button
-        >
-        <el-button
-          :type="layoutType === 'H5' ? 'info' : ''"
-          @click="changeLayoutType('H5')"
-        >
-          {{ i18nt("designer.toolbar.mobileLayout") }}</el-button
-        >
-      </el-button-group>
-      <el-button
+      <!-- <el-button
         type=""
         style="margin-left: 20px"
         :title="i18nt('designer.toolbar.nodeTreeHint')"
         @click="showNodeTreeDrawer"
       >
         <svg-icon icon-class="node-tree"
-      /></el-button>
+      /></el-button> -->
     </div>
-
-    <el-drawer
-      :title="i18nt('designer.toolbar.nodeTreeTitle')"
-      direction="ltr"
-      :visible.sync="showNodeTreeDrawerFlag"
-      :modal="false"
-      :size="280"
-      :destroy-on-close="true"
-      class="node-tree-drawer"
-    >
-      <el-tree
-        ref="nodeTree"
-        :data="nodeTreeData"
-        node-key="id"
-        default-expand-all
-        highlight-current
-        class="node-tree"
-        icon-class="el-icon-arrow-right"
-        @node-click="onNodeTreeClick"
-      ></el-tree>
-    </el-drawer>
-
-    <div class="right-toolbar" :style="{ width: toolbarWidth + 'px' }">
+    <div class="flex-end" :style="{ width: toolbarWidth + 'px' }">
       <div class="right-toolbar-con">
+        <el-button
+          type="text"
+          @click="previewForm('PC')"
+          icon="el-icon-s-platform"
+        >
+       {{  i18nt("designer.toolbar.preview") }}</el-button
+        >
+        <el-button
+          type="text"
+          @click="previewForm('H5')"
+          icon="el-icon-mobile-phone"
+        >
+        {{  i18nt("designer.toolbar.previewMobile") }}</el-button
+        >
         <el-button
           v-if="showToolButton('clearDesignerButton')"
           type="text"
           @click="clearFormWidget"
         >
-          <i class="el-icon-delete" />{{
+          <i class="el-icon-refresh" />{{
             i18nt("designer.toolbar.clear")
-          }}</el-button
-        >
-        <el-button
-          v-if="showToolButton('previewFormButton')"
-          type="text"
-          @click="previewForm"
-        >
-          <i class="el-icon-view" />{{
-            i18nt("designer.toolbar.preview")
-          }}</el-button
-        >
-        <el-button
-          v-if="showToolButton('importJsonButton')"
-          type="text"
-          @click="importJson"
-        >
-          {{ i18nt("designer.toolbar.importJson") }}</el-button
-        >
-        <el-button
-          v-if="showToolButton('exportJsonButton')"
-          type="text"
-          @click="exportJson"
-        >
-          {{ i18nt("designer.toolbar.exportJson") }}</el-button
-        >
-        <el-button
-          v-if="showToolButton('exportCodeButton')"
-          type="text"
-          @click="exportCode"
-        >
-          {{ i18nt("designer.toolbar.exportCode") }}</el-button
-        >
-        <el-button
-          v-if="showToolButton('generateSFCButton')"
-          type="text"
-          @click="generateSFC"
-        >
-          <svg-icon icon-class="vue-sfc" />{{
-            i18nt("designer.toolbar.generateSFC")
           }}</el-button
         >
         <template v-for="(idx, slotName) in $slots">
@@ -123,10 +57,10 @@
         </template>
       </div>
     </div>
-    <!-- 预览这儿是渲染器 -->
-
-    <el-dialog
-      :title="i18nt('designer.toolbar.preview')"
+  </div>
+     <!-- 预览这儿是渲染器 -->
+     <el-dialog
+      title="预览"
       :visible.sync="showPreviewDialogFlag"
       v-if="showPreviewDialogFlag"
       :show-close="true"
@@ -137,7 +71,7 @@
       :append-to-body="true"
       class="small-padding-dialog"
       width="75%"
-      :fullscreen="layoutType === 'H5' || layoutType === 'Pad'"
+      :fullscreen="layoutType === 'PC'"
     >
       <div>
         <div
@@ -145,8 +79,6 @@
           :class="[
             layoutType === 'H5'
               ? 'h5-layout'
-              : layoutType === 'Pad'
-              ? 'pad-layout'
               : '',
           ]"
         >
@@ -192,240 +124,27 @@
         >
       </div>
     </el-dialog>
-
-    <el-dialog
-      :title="i18nt('designer.toolbar.importJson')"
-      :visible.sync="showImportJsonDialogFlag"
-      v-if="showImportJsonDialogFlag"
-      :show-close="true"
-      class="small-padding-dialog"
-      center
-      append-to-body
-      :close-on-click-modal="false"
-      :close-on-press-escape="false"
+    <el-drawer
+      :title="i18nt('designer.toolbar.nodeTreeTitle')"
+      direction="ltr"
+      :visible.sync="showNodeTreeDrawerFlag"
+      :modal="false"
+      :size="280"
       :destroy-on-close="true"
+      class="node-tree-drawer"
     >
-      <el-alert
-        type="info"
-        :title="i18nt('designer.hint.importJsonHint')"
-        show-icon
-        class="alert-padding"
-      ></el-alert>
-      <code-editor
-        :mode="'json'"
-        :readonly="false"
-        v-model="importTemplate"
-      ></code-editor>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="doJsonImport">
-          {{ i18nt("designer.hint.import") }}</el-button
-        >
-        <el-button @click="showImportJsonDialogFlag = false">
-          {{ i18nt("designer.hint.cancel") }}</el-button
-        >
-      </div>
-    </el-dialog>
-
-    <el-dialog
-      :title="i18nt('designer.toolbar.exportJson')"
-      :visible.sync="showExportJsonDialogFlag"
-      v-if="showExportJsonDialogFlag"
-      :show-close="true"
-      class="small-padding-dialog"
-      center
-      append-to-body
-      :close-on-click-modal="false"
-      :close-on-press-escape="false"
-      :destroy-on-close="true"
-    >
-      <code-editor
-        :mode="'json'"
-        :readonly="true"
-        v-model="jsonContent"
-      ></code-editor>
-      <div slot="footer" class="dialog-footer">
-        <el-button
-          type="primary"
-          class="copy-json-btn"
-          :data-clipboard-text="jsonRawContent"
-          @click="copyFormJson"
-        >
-          {{ i18nt("designer.hint.copyJson") }}</el-button
-        >
-        <el-button @click="saveFormJson">{{
-          i18nt("designer.hint.saveFormJson")
-        }}</el-button>
-        <el-button type="" @click="showExportJsonDialogFlag = false">
-          {{ i18nt("designer.hint.closePreview") }}</el-button
-        >
-      </div>
-    </el-dialog>
-
-    <el-dialog
-      :title="i18nt('designer.toolbar.exportCode')"
-      :visible.sync="showExportCodeDialogFlag"
-      v-if="showExportCodeDialogFlag"
-      :show-close="true"
-      class="small-padding-dialog"
-      center
-      append-to-body
-      width="65%"
-      :close-on-click-modal="false"
-      :close-on-press-escape="false"
-      :destroy-on-close="true"
-    >
-      <el-tabs
-        type="border-card"
-        class="no-box-shadow no-padding"
-        v-model="activeCodeTab"
-      >
-        <el-tab-pane label="Vue" name="vue">
-          <code-editor
-            :mode="'html'"
-            :readonly="true"
-            v-model="vueCode"
-            :user-worker="false"
-          ></code-editor>
-        </el-tab-pane>
-        <el-tab-pane label="HTML" name="html">
-          <code-editor
-            :mode="'html'"
-            :readonly="true"
-            v-model="htmlCode"
-            :user-worker="false"
-          ></code-editor>
-        </el-tab-pane>
-      </el-tabs>
-      <div slot="footer" class="dialog-footer">
-        <el-button
-          type="primary"
-          class="copy-vue-btn"
-          :data-clipboard-text="vueCode"
-          @click="copyVueCode"
-        >
-          {{ i18nt("designer.hint.copyVueCode") }}</el-button
-        >
-        <el-button
-          type="primary"
-          class="copy-html-btn"
-          :data-clipboard-text="htmlCode"
-          @click="copyHtmlCode"
-        >
-          {{ i18nt("designer.hint.copyHtmlCode") }}</el-button
-        >
-        <el-button @click="saveVueCode">{{
-          i18nt("designer.hint.saveVueCode")
-        }}</el-button>
-        <el-button @click="saveHtmlCode">{{
-          i18nt("designer.hint.saveHtmlCode")
-        }}</el-button>
-        <el-button type="" @click="showExportCodeDialogFlag = false">
-          {{ i18nt("designer.hint.closePreview") }}</el-button
-        >
-      </div>
-    </el-dialog>
-
-    <el-dialog
-      :title="i18nt('designer.hint.exportFormData')"
-      :visible.sync="showFormDataDialogFlag"
-      v-if="showFormDataDialogFlag"
-      :show-close="true"
-      class="dialog-title-light-bg"
-      center
-      :close-on-click-modal="false"
-      :close-on-press-escape="false"
-      :destroy-on-close="true"
-      :append-to-body="true"
-    >
-      <div style="border: 1px solid #dcdfe6">
-        <code-editor
-          :mode="'json'"
-          :readonly="true"
-          v-model="formDataJson"
-        ></code-editor>
-      </div>
-      <div slot="footer" class="dialog-footer">
-        <el-button
-          type="primary"
-          class="copy-form-data-json-btn"
-          :data-clipboard-text="formDataRawJson"
-          @click="copyFormDataJson"
-        >
-          {{ i18nt("designer.hint.copyFormData") }}</el-button
-        >
-        <el-button @click="saveFormData">{{
-          i18nt("designer.hint.saveFormData")
-        }}</el-button>
-        <el-button type="" @click="showFormDataDialogFlag = false">
-          {{ i18nt("designer.hint.closePreview") }}</el-button
-        >
-      </div>
-    </el-dialog>
-
-    <el-dialog
-      :title="i18nt('designer.toolbar.generateSFC')"
-      :visible.sync="showExportSFCDialogFlag"
-      v-if="showExportSFCDialogFlag"
-      :show-close="true"
-      class="small-padding-dialog"
-      center
-      append-to-body
-      width="65%"
-      :close-on-click-modal="false"
-      :close-on-press-escape="false"
-      :destroy-on-close="true"
-    >
-      <el-tabs
-        type="border-card"
-        class="no-box-shadow no-padding"
-        v-model="activeSFCTab"
-      >
-        <el-tab-pane label="Vue2" name="vue2">
-          <code-editor
-            :mode="'html'"
-            :readonly="true"
-            v-model="sfcCode"
-            :user-worker="false"
-          ></code-editor>
-        </el-tab-pane>
-        <el-tab-pane label="Vue3" name="vue3">
-          <code-editor
-            :mode="'html'"
-            :readonly="true"
-            v-model="sfcCodeV3"
-            :user-worker="false"
-          ></code-editor>
-        </el-tab-pane>
-      </el-tabs>
-      <div slot="footer" class="dialog-footer">
-        <el-button
-          type="primary"
-          class="copy-vue2-sfc-btn"
-          :data-clipboard-text="sfcCode"
-          @click="copyV2SFC"
-        >
-          {{ i18nt("designer.hint.copyVue2SFC") }}</el-button
-        >
-        <el-button
-          type="primary"
-          class="copy-vue3-sfc-btn"
-          :data-clipboard-text="sfcCodeV3"
-          @click="copyV3SFC"
-        >
-          {{ i18nt("designer.hint.copyVue3SFC") }}</el-button
-        >
-        <el-button @click="saveV2SFC">{{
-          i18nt("designer.hint.saveVue2SFC")
-        }}</el-button>
-        <el-button @click="saveV3SFC">{{
-          i18nt("designer.hint.saveVue3SFC")
-        }}</el-button>
-        <el-button type="" @click="showExportSFCDialogFlag = false">
-          {{ i18nt("designer.hint.closePreview") }}</el-button
-        >
-      </div>
-    </el-dialog>
-  </div>
+      <el-tree
+        ref="nodeTree"
+        :data="nodeTreeData"
+        node-key="id"
+        default-expand-all
+        highlight-current
+        class="node-tree"
+        icon-class="el-icon-arrow-right"
+        @node-click="onNodeTreeClick"
+      ></el-tree>
+    </el-drawer>
+</div>
 </template>
 
 <script>
@@ -470,11 +189,7 @@ export default {
 
       toolbarWidth: 420,
       showPreviewDialogFlag: false,
-      showImportJsonDialogFlag: false,
-      showExportJsonDialogFlag: false,
-      showExportCodeDialogFlag: false,
       showFormDataDialogFlag: false,
-      showExportSFCDialogFlag: false,
       showNodeTreeDrawerFlag: false,
 
       nodeTreeData: [],
@@ -518,6 +233,7 @@ export default {
           { label: "丑橘子", value: 3 },
         ],
       },
+      layoutType: "PC",
     };
   },
   computed: {
@@ -538,11 +254,6 @@ export default {
     redoDisabled() {
       return !this.designer.redoEnabled();
     },
-
-    layoutType() {
-      return this.designer.getLayoutType();
-    },
-
     designerDsv() {
       return this.globalDsv;
     },
@@ -612,7 +323,7 @@ export default {
             this.buildTreeNodeOfWidget(wChild, colNode.children);
           });
         });
-      } else if (widget.type === "table") {
+      } else if (widget.type === "table"||widget.type === "subform") {
         //TODO: 需要考虑合并单元格！！
         widget.rows.map((row) => {
           let rowNode = {
@@ -678,7 +389,7 @@ export default {
       this.refreshNodeTree();
       this.showNodeTreeDrawerFlag = true;
       this.$nextTick(() => {
-        if (!!this.designer.selectedId) {
+        if (this.designer.selectedId) {
           //同步当前选中组件到节点树！！！
           this.$refs.nodeTree.setCurrentKey(this.designer.selectedId);
         }
@@ -692,17 +403,13 @@ export default {
     redoHistory() {
       this.designer.redoHistoryStep();
     },
-
-    changeLayoutType(newType) {
-      this.designer.changeLayoutType(newType);
-    },
-
     clearFormWidget() {
       this.designer.clearDesigner();
       this.designer.formWidget.clearWidgetRefList();
     },
 
-    previewForm() {
+    previewForm(val) {
+      this.layoutType=val
       this.showPreviewDialogFlag = true;
     },
 
@@ -749,44 +456,6 @@ export default {
       window.parent.postMessage(msgObj, "*");
     },
 
-    importJson() {
-      this.importTemplate = JSON.stringify(
-        this.designer.getImportTemplate(),
-        null,
-        "  "
-      );
-      this.showImportJsonDialogFlag = true;
-    },
-
-    doJsonImport() {
-      try {
-        let importObj = JSON.parse(this.importTemplate);
-        this.designer.loadFormJson(importObj);
-
-        this.showImportJsonDialogFlag = false;
-        this.$message.success(this.i18nt("designer.hint.importJsonSuccess"));
-
-        this.designer.emitHistoryChange();
-
-        this.designer.emitEvent("form-json-imported", []);
-      } catch (ex) {
-        this.$message.error(ex + "");
-      }
-    },
-
-    exportJson() {
-      console.log(
-        this.designer.widgetList,
-        this.designer.formConfig,
-        "导出的代码"
-      );
-      let widgetList = deepClone(this.designer.widgetList);
-      let formConfig = deepClone(this.designer.formConfig);
-      this.jsonContent = JSON.stringify({ widgetList, formConfig }, null, "  ");
-      this.jsonRawContent = JSON.stringify({ widgetList, formConfig });
-      this.showExportJsonDialogFlag = true;
-    },
-
     copyFormJson(e) {
       copyToClipboard(
         this.jsonRawContent,
@@ -801,11 +470,6 @@ export default {
       this.saveAsFile(this.jsonContent, `vform${generateId()}.json`);
     },
 
-    exportCode() {
-      this.vueCode = generateCode(this.formJson);
-      this.htmlCode = generateCode(this.formJson, "html");
-      this.showExportCodeDialogFlag = true;
-    },
 
     copyVueCode(e) {
       copyToClipboard(
@@ -833,23 +497,6 @@ export default {
 
     saveHtmlCode() {
       this.saveAsFile(this.htmlCode, `vform${generateId()}.html`);
-    },
-
-    generateSFC() {
-      loadBeautifier((beautifier) => {
-        this.sfcCode = genSFC(
-          this.designer.formConfig,
-          this.designer.widgetList,
-          beautifier
-        );
-        this.sfcCodeV3 = genSFC(
-          this.designer.formConfig,
-          this.designer.widgetList,
-          beautifier,
-          true
-        );
-        this.showExportSFCDialogFlag = true;
-      });
     },
 
     copyV2SFC(e) {
@@ -1013,25 +660,7 @@ export default {
 div.toolbar-container {
   //min-width: 728px;  /* 解决工具按钮栏换行的问题 */
   /* 上一行css有问题，当窗口宽度不足时会把按钮挤出到右边的属性设置区，弃之！ */
-}
-
-.left-toolbar {
-  float: left;
-  font-size: 16px;
-}
-
-.right-toolbar {
-  float: right;
-  //width: 420px;
-  text-align: right;
-  overflow: hidden;
-
-  .right-toolbar-con {
-    text-align: left;
-    width: 600px;
-  }
-
-  ::v-deep .el-button--text {
+    ::v-deep .el-button--text {
     font-size: 14px !important;
   }
 }
@@ -1079,6 +708,7 @@ div.toolbar-container {
 .form-render-wrapper {
   //height: calc(100vh - 142px);
   //all: revert !important; /* 防止表单继承el-dialog等外部样式，未生效，原因不明？？ */
+  padding: 10px;
 }
 
 .form-render-wrapper.h5-layout {

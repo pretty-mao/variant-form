@@ -4,7 +4,8 @@
     <el-row :key="widget.id" :gutter="widget.options.gutter" class="grid-container"
             :class="[customClass]"
             :ref="widget.id" v-show="!widget.options.hidden">
-      <template v-for="(colWidget, colIdx) in widget.cols">
+      <template v-for="(colWidget, colIdx) in widget.cols" >
+
         <grid-col-item :widget="colWidget" :key="colIdx" :parent-list="widget.cols"
                        :index-of-parent-list="colIdx" :parent-widget="widget"
                        :col-height="widget.options.colHeight">
@@ -13,6 +14,7 @@
             <slot :name="slot" v-bind="scope"/>
           </template>
         </grid-col-item>
+
       </template>
     </el-row>
 

@@ -24,7 +24,17 @@ export const containers = [
       customClass: "", //自定义css类名
     },
   },
-
+  {
+    type: "subform",
+    category: "container",
+    icon: "subform",
+    rows: [],
+    options: {
+      name: "",
+      hidden: false,
+      customClass: "", 
+    },
+  },
   {
     type: "tab",
     category: "container",
@@ -92,6 +102,37 @@ export const containers = [
       customClass: "", //自定义css类名
     },
   },
+  {
+    type: 'headline',
+    category: 'container',
+    icon: 'title',
+    widgetList: [],
+    options: {
+      label: '在此输入标题',
+      hidden: false,
+      folded: false,
+      showFold: true,
+      textAlign: "left",
+      cardWidth: '100%',
+      shadow: 'never',
+      customClass: ''
+    }
+  },
+  {
+    type: 'subfield',
+    category: 'container',
+    icon: 'subfield',
+    widgetList: [],
+    options: {
+      label: '标题',
+      hidden: false,
+      folded: false,
+      showFold: true,
+      cardWidth: '100%',
+      shadow: 'never',
+      customClass: ''
+    }
+  }
 ];
 
 export const basicFields = [
@@ -101,7 +142,7 @@ export const basicFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "输入框",
       labelAlign: "",
       type: "text",
       defaultValue: "",
@@ -150,7 +191,7 @@ export const basicFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "文本框",
       labelAlign: "",
       rows: 3,
       defaultValue: "",
@@ -191,7 +232,7 @@ export const basicFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "数字框",
       labelAlign: "",
       defaultValue: 0,
       placeholder: "",
@@ -231,7 +272,7 @@ export const basicFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "单选",
       labelAlign: "",
       defaultValue: null,
       columnWidth: "200px",
@@ -271,7 +312,7 @@ export const basicFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "多选",
       labelAlign: "",
       defaultValue: [],
       columnWidth: "200px",
@@ -304,14 +345,13 @@ export const basicFields = [
       onValidate: "",
     },
   },
-
   {
     type: "select",
     icon: "select-field",
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "下拉选择",
       labelAlign: "",
       defaultValue: "",
       placeholder: "",
@@ -352,14 +392,13 @@ export const basicFields = [
       onValidate: "",
     },
   },
-
   {
     type: "time",
     icon: "time-field",
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "时间",
       labelAlign: "",
       defaultValue: null,
       placeholder: "",
@@ -398,7 +437,7 @@ export const basicFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "时间范围",
       labelAlign: "",
       defaultValue: null,
       startPlaceholder: "",
@@ -438,7 +477,7 @@ export const basicFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "日期",
       labelAlign: "",
       type: "date",
       defaultValue: null,
@@ -479,7 +518,7 @@ export const basicFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "日期范围",
       labelAlign: "",
       type: "daterange",
       defaultValue: null,
@@ -514,14 +553,13 @@ export const basicFields = [
       onValidate: "",
     },
   },
-
   {
     type: "switch",
     icon: "switch-field",
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "开关",
       labelAlign: "",
       defaultValue: null,
       columnWidth: "200px",
@@ -558,9 +596,10 @@ export const basicFields = [
       textContent: "备注信息",
       textAlign: "left",
       fontSize: "13px",
-      preWrap: false, //是否自动换行
+      preWrap: true, //是否自动换行
       //-------------------
       customClass: "", //自定义css类名
+      cssClassList: ['default-color','success-color'],
       //-------------------
       onCreated: "",
       onMounted: "",
@@ -573,7 +612,7 @@ export const basicFields = [
     formItemFlag: false,
     options: {
       name: "",
-      label: "",
+      label: "按钮",
       columnWidth: "200px",
       size: "",
       displayStyle: "block",
@@ -592,18 +631,13 @@ export const basicFields = [
       onClick: "",
     },
   },
-
-  //
-];
-
-export const advancedFields = [
   {
     type: "picture-upload",
     icon: "picture-upload-field",
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "图片上传",
       labelAlign: "",
       labelWidth: null,
       labelHidden: false,
@@ -647,7 +681,7 @@ export const advancedFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "文件上传",
       labelAlign: "",
       labelWidth: null,
       labelHidden: false,
@@ -691,7 +725,7 @@ export const advancedFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "富文本",
       labelAlign: "",
       placeholder: "",
       labelWidth: null,
@@ -724,7 +758,7 @@ export const advancedFields = [
     formItemFlag: true,
     options: {
       name: "",
-      label: "",
+      label: "级联选择",
       labelAlign: "",
       defaultValue: "",
       placeholder: "",
@@ -766,12 +800,17 @@ export const advancedFields = [
       onValidate: "",
     },
   },
+
+  //
+];
+
+export const systemFields = [
+
 ];
 
 export const customFields = [];
 
 export function addContainerWidgetSchema(containerSchema) {
-  console.log("addContainerWidgetSchema");
   containers.push(containerSchema);
 }
 
@@ -779,8 +818,8 @@ export function addBasicFieldSchema(fieldSchema) {
   basicFields.push(fieldSchema);
 }
 
-export function addAdvancedFieldSchema(fieldSchema) {
-  advancedFields.push(fieldSchema);
+export function addsystemFieldsSchema(fieldSchema) {
+  systemFields.push(fieldSchema);
 }
 
 export function addCustomWidgetSchema(widgetSchema) {

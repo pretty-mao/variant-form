@@ -1,23 +1,21 @@
 <template>
   <div class="form-widget-container">
-
     <el-form class="full-height-width widget-form" :label-position="labelPosition"
              :class="[customClass, layoutType + '-layout']" :size="size" :validate-on-rule-change="false">
 
       <div v-if="designer.widgetList.length === 0" class="no-widget-hint">{{i18nt('designer.noWidgetHint')}}</div>
-
       <draggable :list="designer.widgetList" v-bind="{group:'dragGroup', ghostClass: 'ghost',animation: 300}"
-                 handle=".drag-handler" @end="onDragEnd" @add="onDragAdd" @update="onDragUpdate" :move="checkMove">
+        handle=".drag-handler" @end="onDragEnd" @add="onDragAdd" @update="onDragUpdate" :move="checkMove">
         <transition-group name="fade" tag="div" class="form-widget-list">
           <template v-for="(widget, index) in designer.widgetList">
             <template v-if="'container' === widget.category">
-              <component :is="getWidgetName(widget)" :widget="widget" :designer="designer" :key="widget.id" :parent-list="designer.widgetList"
+             <component :is="getWidgetName(widget)" :widget="widget" :designer="designer" :key="widget.id" :parent-list="designer.widgetList"
                                 :index-of-parent-list="index" :parent-widget="null"></component>
             </template>
             <template v-else>
               <component :is="getWidgetName(widget)" :field="widget" :designer="designer" :key="widget.id" :parent-list="designer.widgetList"
                             :index-of-parent-list="index" :parent-widget="null" :design-state="true"></component>
-            </template>
+              </template>
           </template>
         </transition-group>
       </draggable>
@@ -125,6 +123,7 @@
     },
     methods: {
       getWidgetName(widget) {
+        console.log('widget--------------', widget)
         return widget.type + '-widget'
       },
 
@@ -246,7 +245,6 @@
       margin: 0 auto;
       width: 420px;
       border-radius: 15px;
-      //border-width: 10px;
       box-shadow: 0 0 1px 10px #495060;
     }
 

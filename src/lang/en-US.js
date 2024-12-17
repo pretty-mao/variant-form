@@ -9,10 +9,10 @@ export default {
     componentLib: 'Components',
     formLib: 'Templates',
     containerTitle: 'Container',
+    systemFieldTile:'system Field',
     dragHandlerHint: 'drag container or field to layout center',
     dragAction: 'drag',
     basicFieldTitle: 'Basic Field',
-    advancedFieldTitle: 'Advanced Field',
     customFieldTitle: 'Customized Field',
 
     noWidgetHint:
@@ -23,6 +23,8 @@ export default {
       table: 'Table',
       tab: 'Tab',
       'headline': 'Headline',
+      subform:"subform",
+      subfield:'subfield',
       section: 'Section',
       'sub-form': 'SubForm',
       'grid-col': 'GridCol',
@@ -80,7 +82,6 @@ export default {
       copyVueCode: 'Copy Vue Code',
       copyHtmlCode: 'Copy HTML Code',
       copyJsonSuccess: 'Copy succeed',
-      importJsonSuccess: 'Import succeed',
       copyJsonFail: 'Copy failed',
       copyVueCodeSuccess: 'Copy succeed',
       copyVueCodeFail: 'Copy failed',
@@ -119,8 +120,6 @@ export default {
       confirm: 'OK',
       cancel: 'Cancel',
       import: 'Import',
-      importJsonHint:
-        'The code to be imported should have the following JSON format.',
       invalidOptionsData: 'Invalid data of options:',
       lastPaneCannotBeDeleted: 'The last pane cannot be deleted.',
       duplicateName: 'Duplicate name: ',
@@ -157,11 +156,7 @@ export default {
       nodeTreeTitle: 'Tree View Of Component Hierarchy',
       clear: 'Clear',
       preview: 'Preview',
-      importJson: 'Import',
-      exportJson: 'Export',
-      exportCode: 'Codes',
-      generateCode: 'Generate Code',
-      generateSFC: 'Generate SFC'
+      previewMobile: 'Mobile Preview',
     },
 
     setting: {

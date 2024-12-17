@@ -3,7 +3,7 @@
                      :parent-widget="parentWidget" :parent-list="parentList" :index-of-parent-list="indexOfParentList"
                      :sub-form-row-index="subFormRowIndex" :sub-form-col-index="subFormColIndex" :sub-form-row-id="subFormRowId">
       <div class="flex-start">
-       <el-input :readonly="true" :placeholder="field.options.label">
+       <el-input :readonly="true" :placeholder="field.options.label" class="mr5">
         <svg-icon slot="append" :icon-class="field.icon" @click="handleSelectStaff"></svg-icon>
        </el-input>
        <el-button type="danger" icon="el-icon-delete" @click="handleDelete"></el-button>
@@ -57,6 +57,11 @@
       components: {
         FormItemWrapper,
         SvgIcon
+      },
+      computed: {
+      //   layoutType() {
+      //   return this.designer.getLayoutType()
+      // },
       },
       created() {
         this.registerToRefList()

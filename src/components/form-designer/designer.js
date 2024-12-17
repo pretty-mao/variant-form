@@ -14,7 +14,6 @@ import {
 } from "@/utils/util";
 import {
   containers,
-  advancedFields,
   basicFields,
   customFields,
 } from "@/components/form-designer/widget-panel/widgetsConfig.js";
@@ -778,7 +777,6 @@ export function createDesigner(vueInstance) {
       let allWidgets = [
         ...containers,
         ...basicFields,
-        ...advancedFields,
         ...customFields,
       ];
       let foundCon = null;
@@ -795,7 +793,6 @@ export function createDesigner(vueInstance) {
       let allWidgets = [
         ...containers,
         ...basicFields,
-        ...advancedFields,
         ...customFields,
       ];
       let foundWidget = null;
@@ -880,7 +877,7 @@ export function createDesigner(vueInstance) {
         });
 
         return newGrid;
-      } else if (containWidget.type === "table") {
+      } else if (containWidget.type === "table"||containWidget.type === "subform") {
         let newTable = deepClone(this.getContainerByType("table"));
         newTable.id = newTable.type + generateId();
         newTable.options.name = newTable.id;
@@ -964,7 +961,7 @@ export function createDesigner(vueInstance) {
         newCol.id = "grid-col-" + tmpId;
         newCol.options.name = "gridCol" + tmpId;
         newCon.cols.push(newCol);
-      } else if (newCon.type === "table") {
+      } else if (newCon.type === "table"||newCon.type === "subform") {
         let newRow = { cols: [] };
         newRow.id = "table-row-" + generateId();
         newRow.merged = false;
@@ -993,6 +990,13 @@ export function createDesigner(vueInstance) {
         // let newRow = { cols: [] }
         // newRow.cols.push(newTabPane)
         // newCon.rows.push(newRow)
+      }else if (newCon.type ==='subfield') {
+        let newTabPane = deepClone(this.getContainerByType("subfield"));
+        newTabPane.id = "subfield-pane" + generateId();
+        newTabPane.options.name = "title";
+        newTabPane.options.label = "标题";
+        newTabPane.options.colspan = 1;
+        newTabPane.options.rowspan = 1;
       }
       //newCon.options.customClass = []
 

@@ -45,7 +45,6 @@
             </li>
           </draggable>
         </el-collapse-item>
-
         <el-collapse-item name="2" :title="i18nt('designer.basicFieldTitle')">
           <draggable
             tag="ul"
@@ -77,29 +76,25 @@
             </li>
           </draggable>
         </el-collapse-item>
-
-        <el-collapse-item
-          name="3"
-          :title="i18nt('designer.advancedFieldTitle')"
-        >
-          <draggable
-            tag="ul"
-            :list="advancedFields"
+        <el-collapse-item name="3" :title="i18nt('designer.systemFieldTile')">
+           <draggable
+            tag="ul" 
+             :list="systemFields"
             :group="{ name: 'dragGroup', pull: 'clone', put: false }"
-            :move="checkFieldMove"
-            :clone="handleFieldWidgetClone"
-            ghost-class="ghost"
+               ghost-class="ghost"
             :sort="false"
-          >
-            <li
-              v-for="(fld, index) in advancedFields"
+             :move="checkFieldMove"
+            :clone="handleFieldWidgetClone"
+             >
+             <li
+              v-for="(fld, index) in systemFields"
               :key="index"
               class="field-widget-item"
               :title="fld.displayName"
               @dblclick="addFieldByDbClick(fld)"
             >
-              <span
-                ><svg-icon
+              <span>
+                <svg-icon
                   :icon-class="fld.icon"
                   class-name="color-svg-icon"
                 />{{
@@ -110,10 +105,10 @@
                 }}</span
               >
             </li>
-          </draggable>
-        </el-collapse-item>
 
-        <!-- -->
+          </draggable>
+
+        </el-collapse-item>
         <el-collapse-item name="4" :title="i18nt('designer.customFieldTitle')">
           <draggable
             tag="ul"
@@ -192,7 +187,7 @@ import Draggable from "vuedraggable";
 import {
   containers,
   basicFields,
-  advancedFields,
+  systemFields,
   customFields,
 } from "./widgetsConfig";
 import { formTemplates } from "./templatesConfig";
@@ -233,9 +228,8 @@ export default {
 
       containers,
       basicFields,
-      advancedFields,
       customFields,
-
+      systemFields,
       formTemplates: formTemplates,
       // ftImages: [
       //   {imgUrl: ftImg1},
@@ -292,20 +286,6 @@ export default {
         });
 
       this.basicFields = this.basicFields
-        .map((fld) => {
-          return {
-            ...fld,
-            displayName: this.i18n2t(
-              `designer.widgetLabel.${fld.type}`,
-              `extension.widgetLabel.${fld.type}`
-            ),
-          };
-        })
-        .filter((fld) => {
-          return !this.isBanned(fld.type);
-        });
-
-      this.advancedFields = this.advancedFields
         .map((fld) => {
           return {
             ...fld,
@@ -438,11 +418,10 @@ div.panel-container {
 
 .widget-collapse {
   border-top-width: 0;
-
   ::v-deep .el-collapse-item__header {
     margin-left: 8px;
-    font-style: italic;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 600;
   }
 
   ::v-deep .el-collapse-item__content {

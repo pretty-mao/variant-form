@@ -16,7 +16,6 @@
     :parent-list="parentList"
     :index-of-parent-list="indexOfParentList"
   >
-    {{ widget.tabs }}
     <div
       :key="widget.id"
       class="tab-container"

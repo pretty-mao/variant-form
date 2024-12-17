@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.textAlign')" v-if="(selectedWidget.type === 'static-text')">
+  <el-form-item :label="i18nt('designer.setting.textAlign')" v-if="(selectedWidget.type === 'static-text'||selectedWidget.type === 'headline')">
     <el-radio-group v-model="optionModel.textAlign" class="radio-group-custom">
       <el-radio-button label="left">
         {{i18nt('designer.setting.leftAlign')}}</el-radio-button>

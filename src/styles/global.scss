@@ -1,6 +1,9 @@
 /* 全局css变量 */
 $--color-primary: #409EFF;
 $--color-default: #909399;
+$--color-success: #67C23A;
+$--color-warning: #E6A23C;
+$--color-danger: #F56C6C;
 
 .primary-color {
   color: $--color-primary;
@@ -8,11 +11,32 @@ $--color-default: #909399;
 .default-color {
   color: $--color-default;
 } 
+.success-color {
+  color: $--color-success;
+}
+.warning-color {
+  color: $--color-warning;
+}
+.danger-color {
+  color: $--color-danger;
+}
 .mr5{
   margin-right: 5px;
 }
+.mb5{
+  margin-bottom: 5px;
+}
+.mb10{
+  margin-bottom: 10px;
+}
 .background-opacity {
   background: rgba(64, 158, 255, 0.6);
+}
+.t-mark{
+  border-bottom:2px solid $--color-primary;
+}
+.t-bottom{
+  border-bottom:2px solid $--color-default;
 }
 
 .form-widget-list {

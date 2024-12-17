@@ -14,24 +14,6 @@ export const cardSchema = {
     customClass: ''
   }
 }
-
-export const headlineSchema = {
-  type: 'headline',
-  category: 'container',
-  icon: 'title',
-  widgetList: [],
-  options: {
-    name: '',
-    label: '我是大标题',
-    hidden: false,
-    folded: false,
-    showFold: true,
-    cardWidth: '100%',
-    shadow: 'never',
-    customClass: 't-danger'
-  }
-}
-
 export const treeSchema = {
   type: 'tree',
   icon: 'tree',

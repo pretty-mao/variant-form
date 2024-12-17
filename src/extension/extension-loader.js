@@ -6,7 +6,7 @@ import * as PERegister from "@/components/form-designer/setting-panel/propertyRe
 import * as PEFactory from "@/components/form-designer/setting-panel/property-editor-factory";
 
 import { cardSchema } from "@/extension/samples/extension-schema";
-import { headlineSchema } from "@/extension/samples/extension-schema";
+
 import CardWidget from "@/extension/samples/card/card-widget";
 import CardItem from "@/extension/samples/card/card-item";
 import { registerCWGenerator } from "@/utils/sfc-generator";
@@ -43,7 +43,6 @@ export const loadExtension = function (Vue) {
    * 5. 加载完毕。
    */
   addContainerWidgetSchema(cardSchema); //加载组件Json Schema
-  addContainerWidgetSchema(headlineSchema); //加载组件Json Schema
   
   /* -------------------------------------------------- */
   Vue.component(CardWidget.name, CardWidget); //注册设计期的容器组件

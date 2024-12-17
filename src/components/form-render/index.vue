@@ -1,12 +1,3 @@
-<!--
-/**
- * author: vformAdmin
- * email: vdpadmin@163.com
- * website: https://www.vform666.com
- * date: 2021.08.18
- * remark: 如果要分发VForm源码，需在本文件顶部保留此文件头信息！！
- */
--->
 
 <template>
   <el-form
@@ -22,6 +13,8 @@
   >
     <template v-for="(widget, index) in widgetList">
       <template v-if="'container' === widget.category">
+        {{ getWidgetName(widget) }}++
+        <!-- 都是进入这个if，显示比如table-widget,栅格和form要排列一行，表单不显示 -->
         <component
           :is="getContainerWidgetName(widget)"
           :widget="widget"
@@ -40,6 +33,7 @@
         </component>
       </template>
       <template v-else>
+        {{ getWidgetName(widget) }}
         <component
           :is="getWidgetName(widget)"
           :field="widget"
@@ -65,7 +59,6 @@
 </template>
 
 <script>
-//import ElForm from 'element-ui/packages/form/src/form.vue'  /* 用于源码调试Element UI */
 import emitter from "@/utils/emitter";
 import "./container-item/index";
 import FieldComponents from "@/components/form-designer/form-widget/field-widget/index";
@@ -151,6 +144,9 @@ export default {
     formConfig() {
       return this.formJsonObj.formConfig;
     },
+    layoutType() {
+        return this.designer.getLayoutType()
+      },
 
     widgetList() {
       console.log(this.formJsonObj.widgetList,'widgetList');
@@ -264,7 +260,7 @@ export default {
               this.buildDataFromWidget(childItem);
             });
           }
-        } else if (wItem.type === "table") {
+        } else if (wItem.type === "table"||wItem.type==='subform') {
           if (!!wItem.rows && wItem.rows.length > 0) {
             wItem.rows.forEach((rowItem) => {
               if (!!rowItem.cols && rowItem.cols.length > 0) {

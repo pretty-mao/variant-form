@@ -1,7 +1,6 @@
 import {
   addContainerWidgetSchema,
   addBasicFieldSchema,
-  addAdvancedFieldSchema,
   addCustomWidgetSchema,
 } from "@/components/form-designer/widget-panel/widgetsConfig";
 import {
@@ -13,7 +12,6 @@ import {
 export {
   addContainerWidgetSchema,
   addBasicFieldSchema,
-  addAdvancedFieldSchema,
   addCustomWidgetSchema,
   registerCommonProperty,
   registerAdvancedProperty,

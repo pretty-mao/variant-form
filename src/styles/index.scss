@@ -23,6 +23,19 @@ body {
   justify-content: center;
   align-items: center;
 }
+.flex-end{
+  display: flex;
+  justify-content: flex-end;
+  align-self: end;
+}
+.flex-space-between{
+  display: flex;
+  justify-content: space-between;
+}
 .align-center{
   align-items: center !important;
 }
+.align-start{
+  align-items: flex-start !important;
+}
+

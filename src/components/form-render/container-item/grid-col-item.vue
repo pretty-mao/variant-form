@@ -5,7 +5,7 @@
       <template v-for="(subWidget, swIdx) in widget.widgetList">
         <template v-if="'container' === subWidget.category">
           <component :is="getComponentByContainer(subWidget)" :widget="subWidget" :key="swIdx" :parent-list="widget.widgetList"
-                          :index-of-parent-list="swIdx" :parent-widget="widget">
+                      :index-of-parent-list="swIdx" :parent-widget="widget">
             <!-- 递归传递插槽！！！ -->
             <template v-for="slot in Object.keys($scopedSlots)" v-slot:[slot]="scope">
               <slot :name="slot" v-bind="scope"/>
@@ -76,7 +76,7 @@
       },
 
       colHeightStyle() {
-        return !!this.colHeight ? {height: this.colHeight + 'px'} : {}
+        return this.colHeight ? {height: this.colHeight + 'px'} : {}
       },
 
     },
@@ -86,15 +86,17 @@
     },
     methods: {
       initLayoutProps() {
-        if (!!this.widget.options.responsive) {
-          if (!!this.previewState) {
+        console.log(this.widget,'widget')
+        let lyType = this.formConfig.layoutType
+        if (this.widget.options.responsive) {
+          if (this.previewState) {
             this.layoutProps.md = undefined
             this.layoutProps.sm = undefined
             this.layoutProps.xs = undefined
 
-            let lyType = this.formConfig.layoutType
+           
             if (lyType === 'H5') {
-              this.layoutProps.span = this.widget.options.xs || 12
+              this.layoutProps.span =this.widget.options.xs||12
             } else if (lyType === 'Pad') {
               this.layoutProps.span = this.widget.options.sm || 12
             } else {
@@ -104,6 +106,9 @@
             this.layoutProps.span = undefined
           }
         } else {
+          if (lyType === 'H5') {
+              this.layoutProps.span =24
+          }
           this.layoutProps.md = undefined
           this.layoutProps.sm = undefined
           this.layoutProps.xs = undefined
